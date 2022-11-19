@@ -14,23 +14,15 @@ SO, I've been working on a newsleteeeeeeeeeeer! Basically it sends an automatic 
 
 So, I will plaster it accross my blog and probably use cookies to hide it if a person is already subscribed. I imagine it to be a small modal, not a big popup but something like a snackbar.
 
-
-
-![](https://lh3.googleusercontent.com/mkAGtJWvzMejuVdgYx_9uOEoiMEuo2jYI9YLXf04TgTo7ywtIf2LVAkHHzyMYUmmvPCzEJsUGZHwj3gUchMq5WFGCNUH2j28gOgG=w1064-v0 "Source: Material.io")
+![Image of a Material UI popup](https://lh3.googleusercontent.com/mkAGtJWvzMejuVdgYx_9uOEoiMEuo2jYI9YLXf04TgTo7ywtIf2LVAkHHzyMYUmmvPCzEJsUGZHwj3gUchMq5WFGCNUH2j28gOgG=w1064-v0 "Source: Material.io")
 
 *Source: Material.io*
 
-
-
 It will have a brief intro about what the newsletter does, a text field to input the email, a subscribe button and of course a close button.
-
-
 
 # Unsubscribe UI
 
 So, currently on subscribtion emails you get sent a link to unsubscribe, which is pretty easy to do since the email is sent only to **you**. BUT the newsletter updates that get sent, get sent using BCC which means that there is no personalization. To combat this, I will make a probably simple and not elegant UI which lets you input the email address and unsubscribe.
-
-
 
 # Muh spam
 

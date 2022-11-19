@@ -2,10 +2,8 @@
 description: I am trying to make a hackintosh, come check out how well I am doing.
 title: I came, I saw, I caved
 publishDate: 05 Jul 2021
-author: exerra
-tags:
-  - karen
-  - website
+image: https://cdn.exerra.xyz/png/icons8/casual-life/candlesticks-chart_512x412.png
+alt: Candlesticks chart
 ---
 This will be a bit of a more diverse post. I usually focus only on my coding stuff but right now I wanna experiment with a bit more personal stuff. So, uh, lets jump right into it?
 

@@ -4,11 +4,6 @@ title: I've been quite busy
 publishDate: 18 Aug 2022
 image: /assets/blog/casual-life-3d-likes.webp
 imagealt: Image of a woman receiving likes
-author: exerra
-tags:
-  - website
-  - npm
-  - api
 ---
 
 It has been quite a while since the last update, and of course a bunch has happened.
@@ -39,7 +34,7 @@ I have also added a Last.fm widget in the "About me" section. I spent quite a wh
 
 So I went with a hybrid approach. The server fetches the info and renders it onto the page, then sends it out to the client. When the client has received it, provided they have JS on, React starts a 10 second interval where it checks for changes and updates the widget accordingly.
 
-Positives are that it works both with and without JS (and even updates!), but the negatives are that due to the server making an API call the time to first byte (TTFB) is quite larger. Ultimately, I have decided that the TTFB isnt large enough to go full client-side rendering for the widget.
+Positives are that it works both with and without JS (and even updates!), but the negatives are that due to the server making an API call the time to first byte ([TTFB](https://web.dev/ttfb/)) is quite larger. Ultimately, I have decided that the [TTFB](https://web.dev/ttfb/) isnt large enough to go full client-side rendering for the widget.
 
 **18 Nov 2022 update**: The widget is now entirely client-side for better SEO.
 

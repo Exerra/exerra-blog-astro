@@ -25,7 +25,7 @@ const permalink = `${Astro.site?.href}blog/${slug}`;
   </header>
   <div class="container">
     <article class="content">
-      {image ? <img src={image} alt={imagealt} /> : <></>}
+      {image ? <img class={"thumbnail"} src={image} alt={imagealt} /> : <></>}
       <Content />
     </article>
     <hr />
@@ -34,6 +34,12 @@ const permalink = `${Astro.site?.href}blog/${slug}`;
 </BaseLayout>
 
 <style>
+  .thumbnail {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   header {
     text-align: center;
   }

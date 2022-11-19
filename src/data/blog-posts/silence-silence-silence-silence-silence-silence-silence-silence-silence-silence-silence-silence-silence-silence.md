@@ -2,6 +2,8 @@
 description: I've been gone for a while, but I've released a package, improved Karen Bot & API.
 title: The silence, it's deafening
 publishDate: 07 Nov 2021
+image: https://cdn.exerra.xyz/png/icons8/casual-life/clock-and-calendar_512x356.png
+alt: Clock and calendar
 ---
 # Where I went
 
