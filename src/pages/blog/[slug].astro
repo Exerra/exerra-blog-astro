@@ -6,18 +6,18 @@ import getPostData from '../../utils/getPostData';
 export async function getStaticPaths() {
   const posts = await Astro.glob('../../data/blog-posts/*.md');
   return posts.map(p => ({
-    params: { slug: p.file.split('/').pop().split('.').shift() },
+    params: { slug: p.file.split('/').pop()?.split('.').shift() },
     props: { post: p },
   }));
 }
 
 const { Content, frontmatter } = Astro.props.post;
-const { title, description, publishDate } = frontmatter;
+const { title, description, publishDate, image, imagealt } = frontmatter;
 const { slug, readingTime } = getPostData(Astro.props.post);
-const permalink = `${Astro.site.href}${slug}`;
+const permalink = `${Astro.site?.href}${slug}`;
 ---
 
-<BaseLayout title={title} description={description} permalink={permalink} current="blog">
+<BaseLayout title={title} description={description} permalink={permalink} image={image} current="blog">
   <header>
     <p>{publishDate} ~ {readingTime}</p>
     <h1>{title}</h1>
@@ -25,6 +25,7 @@ const permalink = `${Astro.site.href}${slug}`;
   </header>
   <div class="container">
     <article class="content">
+      {image ? <img src={image} alt={imagealt} /> : <></>}
       <Content />
     </article>
     <hr />

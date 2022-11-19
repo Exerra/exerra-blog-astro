@@ -8,12 +8,21 @@ export interface Props {
   description: string;
   permalink: string;
   current?: string;
+  image?: string;
 }
-const { title, description, permalink, current } = Astro.props;
+const { title, description, permalink, current, image } = Astro.props;
+
+let img = image
+
+if (img && img.startsWith("/")) {
+  img = img.replace("/", "")
+  img = Astro.site?.href + img
+}
+
 ---
 <html lang="en">
 <head>
-  <BaseHead title={title} description={description} permalink={permalink} />
+  <BaseHead title={title} description={description} permalink={permalink} image={img} />
 </head>
 <body>
   <div class="layout">

@@ -2,12 +2,12 @@
 description: I've released Benchmarks, am working on Identity and have news about my CDN and the horizon.
 title: Projects on the horizon
 publishDate: 04 Oct 2022
+image: /assets/blog/casual-life-3d-workspace.webp
+imagealt: Image of a workspace
 author: exerra
 tags:
   - project-launch
 ---
-
-![Image of a workspace](/assets/blog/casual-life-3d-workspace.webp)
 
 It's been 2 months since the last update, not much has happened, but there are a few updates and new pieces of info.
 

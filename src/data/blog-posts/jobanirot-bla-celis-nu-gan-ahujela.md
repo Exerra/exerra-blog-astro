@@ -2,14 +2,14 @@
 description: Release of a package, rework of a website and plans for CDN improvement.
 title: I've been quite busy
 publishDate: 18 Aug 2022
+image: /assets/blog/casual-life-3d-likes.webp
+imagealt: Image of a woman receiving likes
 author: exerra
 tags:
   - website
   - npm
   - api
 ---
-
-![Image of a woman receiving likes](/assets/blog/casual-life-3d-likes.webp)
 
 It has been quite a while since the last update, and of course a bunch has happened.
 
