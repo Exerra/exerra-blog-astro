@@ -1,4 +1,5 @@
 ---
+import Bio from '../../components/Bio.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const title = 'Blog';
@@ -29,6 +30,8 @@ allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf()
         </div>
       )
     })}
+    <hr />
+    <Bio />
   </div>
 </BaseLayout>
 
