@@ -16,7 +16,7 @@ const determineMimetype = (url: string): string => {
 
 export const get = () => rss({
     title: "Exerra Blog",
-    description: "Exera blog",
+    description: "This is the blog of Exerra, A full-stack developer from Latvia.",
     site: import.meta.env.SITE,
     items: posts.map((post: any) => {
         let data = {
