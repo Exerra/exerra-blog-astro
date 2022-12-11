@@ -32,7 +32,8 @@ export const get = () => rss({
 
             if (img.startsWith("/")) img = `https://blog.exerra.xyz` + img // if images are not absolute (http(s)://[domain]/[file]), we can safely assume it is available under https://blog.exerra.xyz/[slug] 
 
-            data.customData = `<enclosure url="${img}" length="742526" type="${determineMimetype(img)}"/>` // I have no idea how to calculate the length, so I won't. Pretty sure the length attribute isnt used in rss readers anyway
+            //data.customData = `<enclosure url="${img}" length="742526" type="${determineMimetype(img)}"/>` // I have no idea how to calculate the length, so I won't. Pretty sure the length attribute isnt used in rss readers anyway
+            data.customData = `<cover_image>${img}</cover_image>`
         }
 
         return data
