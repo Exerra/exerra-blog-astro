@@ -79,7 +79,7 @@ I am looking for beta-testers, so if you want to help test Exerra Shortener (or 
 
 # CDN
 
-I have added Twemoji to the CDN. If you want to use Twemoji without self-hosting it on your own CDN or using the Twemoji JS library, you can use my CDN alongside my new [extract-unicode](https://npmjs.com/package/extract-unicode) package. It extracts all unicode codepoints for a given symbol, which is perfect for custom emoji libraries. To use Twemoji, all you have to do is replace the emoji with an image link to `https://cdn.exerra.xyz/svg/twemoji/<UNICODE CODEPOINTS (in lowercase) SEPERATED WITH A "-">.svg`. Or, if you don't want to use SVG, and would rather use a 72x72 PNG, the image link will be `https://cdn.exerra.xyz/png/twemoji/72x72/<UNICODE CODEPOINTS (in lowercase) SEPERATED WITH A "-">.png`.
+I have added Twemoji to the CDN. If you want to use Twemoji without self-hosting it on your own CDN or using the Twemoji JS library, you can use my CDN alongside my new [extract-unicode](https://npmjs.com/package/extract-unicode) package. It extracts all unicode codepoints for a given symbol, which is perfect for custom emoji libraries.
 
 I would suggest using Twemoji for flags, as Windows 11 has completely removed country flags from its emojis, which leads to flags appearing as the country code (which is why you can see a Twemoji flag on my blog and my website).
 
