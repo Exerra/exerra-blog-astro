@@ -117,6 +117,8 @@ The notch took some time to get used to, but in the end I preferred the smaller 
 
 I haven't yet had the time to test the cameras, as I have been sick a lot lately, but once I get a chance I will test it and include the results in a new blog post (or update this one, who knows). I mainly want to test the action mode, the cinematic mode and the filters. I've heard that cinematic mode has improved a bunch, so I am excited to test that one out.
 
+Connectivity is a strange one. For some reason my iPhone 14 likes to switch to 3G, even when there is an LTE signal. I don't know why that is happening, but I didn't have that issue on my iPhone 12. I hope this is just some weird software issue, and will wait until the next iOS update to truly judge if it's a product defect or a software issue.
+
 Overall, it isn't a large upgrade, but it is a solid update. Not much has changed, but the features that have been here have been polished and improved, which is something I like more than Android. A lot of Android phones add a bunch of gimmicks that aren't fully fleshed-out and get abandoned after a year or two, with Apple it is overall much more underwhelming, but the features that already have been added get perfected, and if there is a new feature then you can be sure that it will last and only get better.
 
 ## Hackathon
