@@ -1,7 +1,7 @@
 ---
 description: To celebrate the conclusion of 2022, I have made a blog post about v2 of the Exerra API, CDN, a new (released) project, and a bit about my personal life.
 title: 2022 was a good year
-publishDate: 03 Jun 2023
+publishDate: 03 Jan 2023
 image: http://cdn.exerra.xyz/jpg/new-years-2022:2023-riga.jpeg
 imagealt: Image of new years celebrations in Riga, Latvia
 ---
