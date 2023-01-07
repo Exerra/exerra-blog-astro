@@ -1,7 +1,7 @@
 ---
-description: To celebrate the conclusion of 2022, I have made a blog post about v2 of the Exerra API, CDN, a new (released) project, and a bit about my personal life.
 title: Arc is worse than advertised
-publishDate: 08 Jun 2023
+description: A privacy analysis on Arc - a comparatively unique browser by The Browser Company.
+publishDate: 08 Jan 2023
 image: https://cdn.discordapp.com/attachments/713134823706984564/1061400216131080292/Screenshot_2023-01-07_at_23.25.43.png
 imagealt: Image of the Arc browser
 ---
