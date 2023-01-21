@@ -1,6 +1,7 @@
 ---
 import Bio from '../../components/Bio.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import getPostData, { Post } from '../../utils/getPostData';
 
 const title = 'Blog';
 const description = 'Latest articles.';
@@ -8,6 +9,7 @@ const permalink = `${Astro.site?.href}blog`;
 
 let allPosts = await Astro.glob('../../data/blog-posts/*.md');
 allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf());
+
 ---
 
 <BaseLayout title={title} description={description} permalink={permalink} current="blog">
@@ -24,7 +26,8 @@ allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf()
             </h2>
             <p>{post.frontmatter.description}</p>
             <div class="post-item-footer">
-              <span class="post-item-date">— {post.frontmatter.publishDate}</span>
+              {/* @ts-ignore */}
+              <span class="post-item-date">— {post.frontmatter.publishDate} ~ {getPostData(post).readingTime}</span>
             </div>
           </div>
         </div>

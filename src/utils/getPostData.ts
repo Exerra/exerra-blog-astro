@@ -1,6 +1,6 @@
 import readingTime from 'reading-time'
 
-type Post = {
+export type Post = {
   title: string
   file: string
   rawContent: () => string
