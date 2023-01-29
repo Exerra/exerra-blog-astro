@@ -155,7 +155,7 @@ Then, unzip it, go into the unzipped folder and open the "LinuxVersion" folder. 
 
 After that, locate an ENB on Nexus Mods, download it and follow the instructions in the README (if there are any). If there are no instructions, just copy the following items into the Skyrim installation folder: `enbcache`, `enblocal.ini`, `enbseries`, `enbseries.ini`.
 
-## Mod incompability
+## Mod incompatibility
 
 I have set up a document where I will track mod incompatibility on Apple silicon. You can view it [here](https://notea.exerra.xyz/Rl52zpCaJw). It will most likely not get updated often, as I do not mod Skyrim so often where I can find a lot of incompatible mods.
 
