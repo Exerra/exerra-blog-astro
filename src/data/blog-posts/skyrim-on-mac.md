@@ -15,7 +15,7 @@ publishDate: 31 Jan 2023
     * [Installing Mod Organizer 2](#installing-mod-organizer-2)
     * [Installing mods](#installing-mods)
     * [Installing an ENB](#installing-an-enb)
-    * [Mod incompatibility](#mod-incompability)
+    * [Mod incompatibility](#mod-incompatibility)
 
 ---
 
