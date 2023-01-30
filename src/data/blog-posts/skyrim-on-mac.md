@@ -1,7 +1,7 @@
 ---
 title: Play & mod Skyrim on a Mac without Crossover
 description: This is a guide on how to play and mod Skyrim SE/AE on an Apple Silicon Mac without paying for Crossover.
-publishDate: 31 Jan 2023
+publishDate: 29 Jan 2023
 ---
 
 ## **Table of Contents**
