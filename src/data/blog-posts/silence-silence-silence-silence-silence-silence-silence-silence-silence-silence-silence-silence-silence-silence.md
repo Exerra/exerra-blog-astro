@@ -9,8 +9,6 @@ alt: Clock and calendar
 
 There's a little app I'm making. Now, I won't spoil it because it is not nearly done (still working on iCloud stuff), but what I can say is that it is sweet, will be 1,99$ and will only be on iOS (possibly on M1 too if it works well there). My goal is to make it be iOS 14 and up, but supporting 14 is quite difficult and if the market share is big enough I may go with iOS 15 and up (it will upset my jailbroken friends, but just don't jailbreak :fr:).
 
-Oh yeah, I have an Apple Developer license because I am not poor unlike Enzo 😎😎 (inside joke don't worry about it)
-
 ---
 
 # node-musickit-api

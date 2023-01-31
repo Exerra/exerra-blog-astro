@@ -8,7 +8,7 @@ tags:
   - api
 ---
 Hiya!\
-Here I will discuss my **plans** for data collection. I will be serious here since it is quite a delicate subject. **This is not finalized** yet and is **just an idea**. All criticism can be directed towards my Twitter ([](https://twitter.com/Exerra)[@Exerra](https://twitter.com/Exerra)) or my email ([exerra@exerra.xyz](mailto:exerra@exerra.xyz)). **Your feedback is important** to me and I really want to create the best experience for Karen Bot.
+Here I will discuss my **plans** for data collection. I will be serious here since it is quite a delicate subject. **This is not finalized** yet and is **just an idea**. All criticism can be directed towards my Twitter ([@Exerra](https://twitter.com/Exerra)) or my email ([exerra@exerra.xyz](mailto:exerra@exerra.xyz)). **Your feedback is important** to me and I really want to create the best experience for Karen Bot.
 
 # For users
 

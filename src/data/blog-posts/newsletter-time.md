@@ -8,7 +8,7 @@ tags:
 ---
 Hiya!\
 This will be a super small update, but an update nevertheless.\
-SO, I've been working on a newsleteeeeeeeeeeer! Basically it sends an automatic e-mail when a new blog entry is created or updated. Currently I am working on UI for subscribing and UI for unsubscribing.
+SO, I've been working on a newsletter! Basically it sends an automatic e-mail when a new blog entry is created or updated. Currently I am working on UI for subscribing and UI for unsubscribing.
 
 # Subscribe UI
 
