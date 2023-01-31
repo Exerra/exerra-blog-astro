@@ -4,8 +4,11 @@ description: This is a guide on how to play and mod Skyrim SE/AE on an Apple Sil
 publishDate: 29 Jan 2023
 ---
 
-## **Table of Contents**
-
+<details>
+    <summary>
+        <h2>Table of Contents</h2>
+    </summary>
+    
 * [Requirements](#requirements)
 * [Installing Porting Kit](#installing-porting-kit)
 * [Installing Skyrim](#installing-skyrim)
@@ -16,8 +19,9 @@ publishDate: 29 Jan 2023
     * [Installing mods](#installing-mods)
     * [Installing an ENB](#installing-an-enb)
     * [Mod incompatibility](#mod-incompatibility)
+</details>
 
----
+<br />
 
 If you've ever wanted to play Skyrim on a Mac, you've probably run into CrossOver. It is an app that lets you open Windows applications on Mac, and thus has been used by every single article or video showing you how to play Windows games on Mac. The thing is, **CrossOver is not a free app**. It costs $64, which may not seem like a lot, but when you're trying to play a game that you've already purchased, it can be a bit of a bummer to have to fork over even more money.
 
