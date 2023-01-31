@@ -14,6 +14,8 @@ const ToC = Array.from(
 	content: groups?.content!
 }))
 
+console.log("nice cok bro")
+
 interface Heading {
     heading: number,
     content: string
@@ -52,11 +54,20 @@ const parseToC = async (data: Array<Heading>, index: number): Promise<void> => {
     }
 
     if (data[index + 1].heading == data[index].heading) {
-        parsed.push({
-            heading: data[index  + 1].heading,
-            content: data[index  + 1].content,
-            subHeadings: []
-        })
+
+        if (!parsed.some(e => e.content === data[index].content)) {
+            parsed.push({
+                heading: data[index].heading,
+                content: data[index ].content,
+                subHeadings: []
+            })
+        } else if (!parsed.some(e => e.content === data[index + 1].content)) {
+            parsed.push({
+                heading: data[index + 1].heading,
+                content: data[index + 1].content,
+                subHeadings: []
+            })
+        }
 
 
         data = await data.filter(function( element ) {
