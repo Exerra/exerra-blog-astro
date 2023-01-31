@@ -2,61 +2,65 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Bio from '../../components/Bio.astro';
 import getPostData from '../../utils/getPostData';
+import TableOfContents from '../../components/TableOfContents.astro';
 
 export async function getStaticPaths() {
-  const posts = await Astro.glob('../../data/blog-posts/*.md');
-  return posts.map(p => ({
-    params: { slug: p.file.split('/').pop()?.split('.').shift() },
-    props: { post: p },
-  }));
+	const posts = await Astro.glob('../../data/blog-posts/*.md');
+	return posts.map(p => ({
+		params: { slug: p.file.split('/').pop()?.split('.').shift() },
+		props: { post: p },
+	}));
 }
 
-const { Content, frontmatter } = Astro.props.post;
-const { title, description, publishDate, image, imagealt } = frontmatter;
+const { Content, frontmatter, rawContent } = Astro.props.post;
+const { title, description, publishDate, image, imagealt, hideToC } = frontmatter;
 const { slug, readingTime } = getPostData(Astro.props.post);
 const permalink = `${Astro.site?.href}blog/${slug}`;
 ---
 
 <BaseLayout title={title} description={description} permalink={permalink} image={image} current="blog">
-  <header>
-    <p>{publishDate} ~ {readingTime}</p>
-    <h1>{title}</h1>
-    <hr />
-  </header>
-  <div class="container">
-    <article class="content">
-      {image ? <img class={"thumbnail"} src={image} alt={imagealt} loading={"lazy"} /> : <></>}
-      <Content />
-    </article>
-    <hr />
-    <Bio />
-  </div>
+	<header>
+		<p>{publishDate} ~ {readingTime}</p>
+		<h1>{title}</h1>
+		<hr />
+	</header>
+	<div class="container">
+		<article class="content">
+			{image ? <img class={"thumbnail"} src={image} alt={imagealt} loading={"lazy"} /> : <></>}
+
+			{ hideToC ? <></> : <TableOfContents md={rawContent()} /> }
+
+			<Content />
+		</article>
+		<hr />
+		<Bio />
+	</div>
 </BaseLayout>
 
 <style>
-  .thumbnail {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
+	.thumbnail {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
 
-  header {
-    text-align: center;
-  }
+	header {
+		text-align: center;
+	}
 
-  header h1 {
-    margin-bottom: 0.7em;
-  }
+	header h1 {
+		margin-bottom: 0.7em;
+	}
 
-  header p {
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    font-family: var(--font-family-sans);
-    font-weight: 600;
-  }
+	header p {
+		color: var(--text-secondary);
+		text-transform: uppercase;
+		font-family: var(--font-family-sans);
+		font-weight: 600;
+	}
 
-  header hr {
-    min-width: 100px;
-    width: 30%;
-  }
+	header hr {
+		min-width: 100px;
+		width: 30%;
+	}
 </style>

@@ -1,0 +1,114 @@
+---
+interface Props {
+    md: string
+}
+
+const { md } = Astro.props
+
+const regex = /(?<flag>#{1,6})\s+(?<content>.+)/g
+
+const ToC = Array.from(
+	md.matchAll(regex)
+).map(({ groups }) => ({
+	heading: groups?.flag.length!,
+	content: groups?.content!
+}))
+
+interface Heading {
+    heading: number,
+    content: string
+}
+
+let parsed: Array<{
+    heading: number,
+    content: string,
+    subHeadings: Array<Heading>
+}> = []
+
+const parseToC = async (data: Array<Heading>, index: number): Promise<void> => {
+
+    if (data[index + 1] == undefined) return
+
+    if (data[index + 1].heading > data[index].heading) {
+        //temp[0].push(data[index + 1])
+
+        if (parsed.length < (index + 1)) {
+            parsed.push({
+                heading: data[index].heading,
+                content: data[index].content,
+                subHeadings: []
+            })
+        } else {
+            parsed[index].subHeadings.push(data[index + 1])
+        }
+
+        delete data[index + 1]
+
+        data = data.filter(function( element ) {
+            return element !== undefined;
+        });
+
+        return parseToC(data, index)
+    }
+
+    if (data[index + 1].heading == data[index].heading) {
+
+        if (!parsed.some(e => e.content === data[index].content)) {
+            parsed.push({
+                heading: data[index].heading,
+                content: data[index ].content,
+                subHeadings: []
+            })
+        } else if (!parsed.some(e => e.content === data[index + 1].content)) {
+            parsed.push({
+                heading: data[index + 1].heading,
+                content: data[index + 1].content,
+                subHeadings: []
+            })
+        }
+
+
+        data = await data.filter(function( element ) {
+            return element !== undefined;
+        });
+
+        return parseToC(data, ++index)
+    }
+
+    return 
+}
+
+await parseToC(ToC, 0)
+
+---
+
+<details>
+    <summary>
+        <h2>Table of Contents</h2>
+    </summary>
+
+    <ul>
+        {parsed.map(h => (
+            <li>
+                <a href={`#${h.content.toLowerCase().split(" ").join("-")}`}>{h.content}</a>
+                {h.subHeadings?.length > 0 ? <ul>
+                    {h.subHeadings.map(sh => (
+                        <li><a href={`#${sh.content.toLowerCase().split(" ").join("-")}`}>{sh.content}</a></li>
+                    ))}
+                </ul> : <></>}
+            </li>
+        ))}
+    </ul>
+</details>
+
+<style>
+    summary {
+        margin-top: 1em;
+    }
+
+	summary h2,
+	summary h3 {
+		margin-top: -1em;
+		margin-left: 1em;
+	}
+</style>
