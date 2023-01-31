@@ -3,22 +3,21 @@ interface Props {
     md: string
 }
 
-interface Heading {
-    heading: number,
-    content: string
-}
-
 const { md } = Astro.props
 
 const regex = /(?<flag>#{1,6})\s+(?<content>.+)/g
 
 const ToC = Array.from(
 	md.matchAll(regex)
-	// @ts-ignore (idk why it complains, TODO: figure it out)
-).map(({ groups: { flag, content } }) => ({
-	heading: flag.length,
-	content
+).map(({ groups }) => ({
+	heading: groups?.flag.length!,
+	content: groups?.content!
 }))
+
+interface Heading {
+    heading: number,
+    content: string
+}
 
 let parsed: Array<{
     heading: number,
@@ -26,7 +25,7 @@ let parsed: Array<{
     subHeadings: Array<Heading>
 }> = []
 
-const parseToC = async (data: Array<{ heading: number, content: string }>, index: number): Promise<void> => {
+const parseToC = async (data: Array<Heading>, index: number): Promise<void> => {
 
     if (data[index + 1] == undefined) return
 
@@ -94,7 +93,6 @@ await parseToC(ToC, 0)
 </details>
 
 <style>
-
     summary {
         margin-top: 1em;
     }
