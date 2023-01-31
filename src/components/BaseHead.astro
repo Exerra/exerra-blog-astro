@@ -11,6 +11,7 @@ export interface Props {
 
 const { title, description, permalink, image } = Astro.props;
 const socialUrl = "https://cdn.exerra.xyz/png/mockups/exerra-blog_1x.png"
+const site = Astro.site?.href
 ---
 
 <!-- Global Metadata -->
@@ -37,6 +38,10 @@ const socialUrl = "https://cdn.exerra.xyz/png/mockups/exerra-blog_1x.png"
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={image ?? socialUrl} />
+
+<!-- RSS stuff -->
+
+<link rel="alternate" type="application/rss+xml" title="Exerra's Blog" href={site + "rss.xml"} />
 
 <!-- This is intentionally inlined to avoid FOUC -->
 <script>
