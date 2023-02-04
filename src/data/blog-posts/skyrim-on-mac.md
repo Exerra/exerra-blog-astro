@@ -146,6 +146,50 @@ I have set up a document where I will track mod incompatibility on Apple silicon
 
 ---
 
+# Creating mods
+
+It is possible to create mods for Skyrim on a Mac using the Creation Kit! I do advise you to first follow the ["Modding Skyrim"](#modding-skyrim) section as the experience will be better with it.
+
+## Issues
+
+It doesn't work fully, though; most stuff works, but the toolbar does not show up on Mac.
+
+Windows:
+![](https://cdn.discordapp.com/attachments/713134823706984564/1071510450321235968/Screenshot_2023-02-04_at_21.19.51.png)
+
+Mac:
+![](https://cdn.discordapp.com/attachments/713134823706984564/1071510511453216778/Screenshot_2023-02-04_at_21.20.09.png)
+
+I'm not sure how bad that is, pretty sure some stuff is available in the menus anyway, but I wouldn't count on the experience being even close to the Windows one.
+
+## Installing the Creation Kit
+
+Whether you have an ambitious mod idea, a simple fix idea or just want to fool around, you'll need to install the Creation Kit first. You can download the Creation Kit directly to your game folder from Steam (first, add it to your library [here](https://store.steampowered.com/app/1946180/)). I'm not sure about the GOG version, but I assume it either comes bundled-in or is downloadable from the extras.
+
+After that, launch it and it should work basically out-of-the-box. If it does not launch, restart your computer.
+
+## Using the Creation Kit
+
+If you don't know how to use the Creation Kit, you can follow the tutorials [here](https://www.creationkit.com/index.php?title=Category:Getting_Started).
+
+It is possible to use the Creation Kit through Steam or through a mod manager. If you wish to use the Creation Kit through Steam, which is recommended for mods that don't have external dependencies, all you have to do is click Play on Steam.
+
+If you wish to create mods with external dependencies, you have to launch the Creation Kit through a mod manager. Assuming that you chose Mod Organizer 2, all you have to do is close it (if it was open) and open it again. MO2 should automatically see the Creation Kit and add it to the launchable EXE dropdown.
+
+To test a mod, all you have to do is launch Skyrim through Mod Organiser 2 with the mod enabled.
+
+## Publishing mods
+
+First you have to save the file as as an ESP with the name of your mod.
+
+Then you have to extract it. If you launched the Creation Kit through Steam, it will be in the `Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/Data/` directory (if you're unsure on how to get there using Finder, refer to the ["Installing SKSE"](#installing-skse) section). If you launched it through Mod Organizer 2, it should be somewhere in `users/<your_user>/AppData/Local/ModOrganizer/Skyrim Special Edition/mods/` (though I might be wrong, I haven't worked with MO2 + CK in a while).
+
+And now comes the fun part - publishing the mod on Nexus Mods. You could distribute the mod on different websites (and it is actually preferred for a lot of NSFW mods), but Nexus Mods is by far the most popular website where people get mods, and thus will probably be the best choice for your mod.
+
+It is actually quite simple, all you have to do is go [here](https://www.nexusmods.com/mods/add) while logged in, fill out the form and boom you're a mod author! Also if you ever reach like 1000 unique downloads (if my memory is correct) and you join the Nexus Mods Mod Author discord server, make sure to ping me! 👀
+
+---
+
 And this is the end. If you have any questions or feedback, please reach out to me. You can find my contacts in [my website](https://exerra.xyz).
 
 If I find any issues, I will update this post to warn about it, and if it is fixable I will also include a guide on how to fix it.
