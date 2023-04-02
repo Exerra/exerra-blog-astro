@@ -190,6 +190,12 @@ It is actually quite simple, all you have to do is go [here](https://www.nexusmo
 
 ---
 
+# A few notes
+
+The team behind [Asahi Linux](https://asahilinux.org/) recently improved their GPU drivers to be faster than Apple’s (in some cases). Currently they are experimenting with Proton, a Windows app emulation software by Valve. If they succeed, all of this could become irrelevant. If they do succeed in running Proton, I will update this blog post with a new section about running it under [Asahi Linux](https://asahilinux.org/).
+
+---
+
 And this is the end. If you have any questions or feedback, please reach out to me. You can find my contacts in [my website](https://exerra.xyz).
 
 If I find any issues, I will update this post to warn about it, and if it is fixable I will also include a guide on how to fix it.
