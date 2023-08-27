@@ -49,12 +49,21 @@ Without this record, if we try send an email through MailChannels, email servers
 
 (Fun fact! I spent a week troubleshooting DKIM not working, because I forgot to add this!)
 
-**Just create a new DNS TXT record, with the name being the domain you want to send emails from (if no subdomains, then just put `@`) and the value being:**
+**If you DO NOT have an SPF DNS record already** (which is unlikely), just create a new DNS TXT record, with the name being the domain you want to send emails from (if no subdomains, then just put `@`) and the value being:
+
 ```
 v=spf1 a mx include:relay.mailchannels.net ~all
 ```
 
-![Adding the TXT record](https://cdn.discordapp.com/attachments/713134823706984564/1119710423948726342/image.png)
+**If you do** (which you should already have if you set up Email Routing), add `include:relay.mailchannels.net` after the other includes. Example:
+
+```
+v=spf1 include:_spf.mx.cloudflare.net include:relay.mailchannels.net ~all
+```
+
+![Adding the TXT record](https://share.exerra.xyz/hDOWMYA.png)
+
+Pro tip: You cannot have multiple SPF TXT records, so if you have to add another include, just append it in the existing TXT record.
 
 ## DKIM
 
@@ -142,3 +151,7 @@ export default {
 ```
 
 More documentation on the transactional API can be found [here](https://api.mailchannels.net/tx/v1/documentation).
+
+---
+
+I made a small edit that fixed a major issue, sorry if you had any issues with what I wrote beforehand 😥
