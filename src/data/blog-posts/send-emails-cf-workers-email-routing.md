@@ -104,7 +104,7 @@ mailchannels._domainkey IN TXT "<content of the file record.txt>"
 
 ## Domain protection
 
-After this blog post was written, MailChannels has introduced [Domain Lockdown](https://support.mailchannels.com/hc/en-us/articles/16918954360845-Secure-your-domain-name-against-spoofing-with-Domain-Lockdown-) that is MANDATORY for Cloudflare Workers users, which means... yet another DNS record to add.
+After this blog post was written, MailChannels has introduced [Domain Lockdown](https://support.mailchannels.com/hc/en-us/articles/16918954360845-Secure-your-domain-name-against-spoofing-with-Domain-Lockdown-) that is MANDATORY for Cloudflare Workers users… which means yet another DNS record to add.
 
 First you need to obtain your Workers subdomain. Go to "Workers & Pages" on your Cloudflare account, and in the right sidebar it should be there.
 
@@ -112,7 +112,9 @@ First you need to obtain your Workers subdomain. Go to "Workers & Pages" on your
 
 After that, add a TXT record `_mailchannels` with the value of `v=mc1 cfid=<WORKERS SUBDOMAIN>`
 
-Note that it may take a while for this to update, if it doesn't work at first, wait a bit. Also, you can add as many `cfid`s as you want, so I would also suggest adding one for both your domain and the subdomain of the CF Worker you will be sending email from (not sure if it does something, but just in case). 
+**Note that it may take a while for this to update - if it doesn't work at first, wait a bit.**
+
+Also, you can add as many `cfid` as you want, so I would also suggest adding one for both your domain and the subdomain of the CF Worker you will be sending email from (not sure if it does something, but just in case). 
 
 ![Domain protection TXT DNS record example](https://share.exerra.xyz/azfwwKa.png)
 
