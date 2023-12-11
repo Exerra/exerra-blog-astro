@@ -6,11 +6,13 @@ hideToC: false
 image: https://tools.exerra.xyz/og.png
 ---
 
-Utilities had a lot of problems - some big, some small, so I eventually ended up making a replacement - Tools.
+**Tools is accessible at - [tools.exerra.xyz](https://tools.exerra.xyz)**
+
+Utilities had a lot of problems - some big, some small, so I eventually ended up making a replacement - [Tools](https://tools.exerra.xyz).
 
 This post is meant to explain my thought process behind each decision and to ultimately, hopefully, be the first of many reports of old outdated projects being updated to my modern standards.
 
-⚠️ **Bit of a spoiler, but Utilities is no longer accessible as it redirects to Tools.** ⚠️
+⚠️ **Bit of a spoiler, but Utilities is no longer accessible as it redirects to [Tools](https://tools.exerra.xyz).** ⚠️
 
 # Backstory
 
@@ -28,13 +30,13 @@ Websites have 3 categories with which we can label issues - design, performance 
 
 ## Design
 
-![](https://share.exerra.xyz/0HC5DpZ.png)
+![Utilities index page on desktop](https://share.exerra.xyz/0HC5DpZ.png)
 
 The design for Utilities was very simple, childish, colourful and full with paddings. At the time I had finished making a project which had a very similar design, and, in my opinion, a design that still fits the project. However, I made the fatal mistake of taking the same design, removing key elements that made it look good (e.g. images) and forcefully cramming it into Utilities.
 
 The result was a very big mess that wasn't optimised for mobile at _all_.
 
-![](https://share.exerra.xyz/eRn5YoI.png)
+![Utilities index page and aspect ratio calculator on mobile](https://share.exerra.xyz/eRn5YoI.png)
 
 As you can see in the image, the titles and descriptions are way too big, leading to a lot of scrolling and a general "zoomed-in" feeling. That especially sucks when you have to quickly make changes (e.g. you have multiple coefficients to calculate, and to calculate every one you have to scroll quite a lot).
 
@@ -52,7 +54,7 @@ This is the most nitpicky of them all, but it does degrade the UX for mobile use
 
 Now, buttons themselves aren't useless if you have something that should only fire once and only fire when the user has inputted all of the data... however in this case it was useless.
 
-![](https://share.exerra.xyz/kHZeFJy.png)
+![Utilities data coefficient calculator on desktop](https://share.exerra.xyz/kHZeFJy.png)
 
 Let's take for example the Death/Birth Coefficient Calculator. What difference does it make if the coefficient gets calculated every time you change a value, or if it gets calculated on a button press?
 
@@ -64,23 +66,23 @@ Simple math isn't resource intensive, so it is not that. It isn't destructive, s
 
 # The redesign
 
-As the redesign ended up being quite professional, I ended up going with the name "Tools". It is easier to type, has less characters to read and just rolls off the tongue easier.
+As the redesign ended up being quite professional, I ended up going with the name "[Tools](https://tools.exerra.xyz)". It is easier to type, has less characters to read and just rolls off the tongue easier.
 
 ## Design
 
-![](https://share.exerra.xyz/0wMBZLo.png)
+![Tools index page on desktop](https://share.exerra.xyz/0wMBZLo.png)
 
 For the design my main goal was to make it look clean, professional and tidy it up a little, a.k.a. get rid of the useless padding. For the design I ended up taking cues from [shadcn/ui](https://ui.shadcn.com/), which I have already used for [ChromeOS Releases](https://chromeos.exerra.xyz) and although I ended up not using the library itself (due to performance considerations), I did end up copying the style a bit.
 
 Now not only does the desktop experience get better as everything fits without having to scroll, but most importantly the mobile experience gets MUCH better.
 
-![](https://share.exerra.xyz/PzVIDRi.png)
+![Tools index page and aspect ratio calculator on mobile](https://share.exerra.xyz/PzVIDRi.png)
 
 The index page is already packed with more information (descriptions), while still showing more cards than Utilities.
 
 The tool page now finally relegates just a relatively small amount of the page for the title and description, leaving the rest to the input fields. Words cannot describe how much better this is, so I will just show you!
 
-![](https://share.exerra.xyz/jC1An0w.png)
+![Utilities aspect ratio calculator and Tools aspect ratio calculator on mobile](https://share.exerra.xyz/jC1An0w.png)
 
 As someone who really hates unnecessary actions and most importantly the "zoomed-in" feeling, the new design is just... awesome. I can't think of a better way to say it.
 
@@ -88,23 +90,23 @@ As someone who really hates unnecessary actions and most importantly the "zoomed
 
 Remember how I talked about MPAs and SPAs? Yeah, well that's not the only thing different now.
 
-Tools is now built with Astro and React. Astro is a very optimised and amazing framework that even, somehow, managed to optimise React. The difference between MPA performance of Astro (w/ React) and NextJS is already *insane*, however it gets better.
+[Tools](https://tools.exerra.xyz) is now built with Astro and React. Astro is a very optimised and amazing framework that even, somehow, managed to optimise React. The difference between MPA performance of Astro (w/ React) and NextJS is already *insane*, however it gets better.
 
-Tools as an MPA works much better already, but what if I cached the important stuff and made it into an SPA? Well, I did!
+[Tools](https://tools.exerra.xyz) as an MPA works much better already, but what if I cached the important stuff and made it into an SPA? Well, I did!
 
-Using `astro-spa` I managed to (very easily!!) convert Tools from an MPA to an SPA. It doesn't really change much if you just directly go to a tool (especially because it doesn't really add that much JS), however if you go to the index and navigate to a tool, or just traverse the tools, you will immediately feel the... fastness?
+Using `astro-spa` I managed to (very easily!!) convert [Tools](https://tools.exerra.xyz) from an MPA to an SPA. It doesn't really change much if you just directly go to a tool (especially because it doesn't really add that much JS), however if you go to the index and navigate to a tool, or just traverse the tools, you will immediately feel the... fastness?
 
 ⚠️ _**While writing this post I did end up finding a bug with the SPA.** If you use **Firefox** the required scripts for the calculators don't load if you start on the *index* page, but if you start on a tool (which loads in the React scripts), everything works fine. I might end up disabling it on Firefox browsers if it keeps happening, but hopefully I can fix it_
 
 ## Functionality
 
-As I alluded to before, Tools now does the calculations automatically every time you input a new value into the fields. This makes the mobile experience much better, as theres no more scrolling, etc.
+As I alluded to before, [Tools](https://tools.exerra.xyz) now does the calculations automatically every time you input a new value into the fields. This makes the mobile experience much better, as theres no more scrolling, etc.
 
 ---
 
 # What now?
 
-Now is the migratory phase to Tools. I have already set up a redirect from Utilities to Tools. I could have just added a banner with a link to Tools, however I thought that I should rather just forcefully migrate users to Tools. I am sorry for anyone affected, but I imagine the slight inconvenience will be outweighed by the massive benefits of the new redesign.
+Now is the migratory phase to [Tools](https://tools.exerra.xyz). I have already set up a redirect from Utilities to [Tools](https://tools.exerra.xyz). I could have just added a banner with a link to [Tools](https://tools.exerra.xyz), however I thought that I should rather just forcefully migrate users to [Tools](https://tools.exerra.xyz). I am sorry for anyone affected, but I imagine the slight inconvenience will be outweighed by the massive benefits of the new redesign.
 
 I also have some ideas of what I can put into the calculator:
 - Gamepad tester
