@@ -98,6 +98,8 @@ Using `astro-spa` I managed to (very easily!!) convert [Tools](https://tools.exe
 
 ⚠️ _**While writing this post I did end up finding a bug with the SPA.** If you use **Firefox** the required scripts for the calculators don't load if you start on the *index* page, but if you start on a tool (which loads in the React scripts), everything works fine. I might end up disabling it on Firefox browsers if it keeps happening, but hopefully I can fix it_
 
+Edit: The bug affects more browsers than I thought. See: [issue #3 on GitHub](https://github.com/Exerra/tools/issues/3)
+
 ## Functionality
 
 As I alluded to before, [Tools](https://tools.exerra.xyz) now does the calculations automatically every time you input a new value into the fields. This makes the mobile experience much better, as theres no more scrolling, etc.
