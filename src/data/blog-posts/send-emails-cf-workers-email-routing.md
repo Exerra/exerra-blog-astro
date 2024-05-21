@@ -11,7 +11,7 @@ tags:
   - spf
   - dkim
 hideToC: true
-image: https://share.exerra.xyz/f9Pxcfq.png
+image: https://share.exerra.xyz/4PGtCPo.png
 ---
 
 **Mailchannels will be shutting down the Workers Email API on `July 1st 2024 @ 00:00 (UTC+0)`. This WILL cause all existing projects to break and any future projects won't work.**
