@@ -11,6 +11,13 @@ tags:
   - spf
   - dkim
 hideToC: true
+image: https://share.exerra.xyz/f9Pxcfq.png
+---
+
+**Mailchannels will be shutting down the Workers Email API on `July 1st 2024 @ 00:00 (UTC+0)`. This WILL cause all existing projects to break and any future projects won't work.**
+
+**More information [here](https://support.mailchannels.com/hc/en-us/articles/26814255454093-End-of-Life-Notice-Cloudflare-Workers).** 
+
 ---
 
 If you're using Cloudflare Email Routing alongside Cloudflare Workers, you've probably noticed an issue. You can only send or forward emails to approved email addresses. Fortunately, if you want to send emails to any address you want, [Cloudflare has partnered up with MailChannels](https://blog.mailchannels.com/mailchannels-enables-free-email-sending-for-cloudflare-workers-customers) to provide every Cloudflare customer free email sending through a Cloudflare Worker.
