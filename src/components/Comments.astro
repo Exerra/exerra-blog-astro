@@ -1,0 +1,183 @@
+---
+import type { FediContext } from '../types/FediContext';
+
+
+export interface Props {
+  fediBase: string;
+  fediPost: string;
+}
+
+const { fediBase, fediPost } = Astro.props;
+
+const req = await fetch(`https://${fediBase}/api/v1/statuses/${fediPost}/context`)
+
+const data = await req.json() as FediContext
+
+interface CommentPart {
+    avatar: string,
+    nickname: string,
+    account: string,
+    id: string,
+    content: string,
+    likes: number,
+    created_at: Date
+}
+
+interface Comment extends CommentPart {
+    comments: CommentPart[]
+} 
+
+// type Comments = Array<{
+//     comment: Comment
+// }>
+
+let comments: Comment[] = []
+
+const topLevelComments = data.descendants.filter(desc => desc.in_reply_to_id == fediPost)
+
+// for (let comment in )
+console.time("loop")
+for (let comment of topLevelComments) {
+    // let 
+    let temp: Comment = {
+        avatar: comment.account.avatar,
+        nickname: comment.account.display_name,
+        account: comment.account.acct,
+        id: comment.id,
+        content: comment.content,
+        likes: comment.favourites_count,
+        created_at: new Date(comment.created_at),
+        comments: []
+    }
+
+    // const subComments = data.descendants.filter(desc => desc.in_reply_to_id == comment.id)
+
+    // for (let subComment of subComments) {
+    //     temp.comments.push({
+    //         nickname: subComment.account.display_name,
+    //         account: subComment.account.acct,
+    //         id: subComment.id,
+    //         content: subComment.content,
+    //         likes: subComment.favourites_count,
+    //         created_at: new Date(subComment.created_at),
+    //     })
+    // }
+
+    comments.push(temp)
+}
+
+for (let i in comments) {
+    let parsed = data.descendants.filter(desc => desc.in_reply_to_id == comments[i].id)
+
+    for (let comment of parsed) {
+        comments[i].comments.push({
+            avatar: comment.account.avatar,
+            nickname: comment.account.display_name,
+            account: comment.account.acct,
+            id: comment.id,
+            content: comment.content,
+            likes: comment.favourites_count,
+            created_at: new Date(comment.created_at),
+        })
+    }
+}
+
+console.timeEnd("loop")
+
+---
+
+<h2 id="comments">Comments</h1>
+
+<p>Only the top 2 levels of comments are shown.</p>
+<p>To view the rest, or comment yourself, go to this post on <a href={`https://${fediBase}/@exerra@indieweb.social/${fediPost}`}>Mastodon</a></p>
+
+<div class="comments">
+    {comments.map(comment => (
+        <div class="comment">
+            <div class="author">
+                <img src={comment.avatar} width={64} height={64} />
+                <p class="username">{comment.nickname} <span>@{comment.account}</span></p>
+            </div>
+            <div class="part">
+                <div set:html={comment.content}></div>
+                {comment.comments.map(subcomment => (
+                    <div class="subcomment">
+                        <div class="author">
+                            <img src={subcomment.avatar} width={64} height={64} />
+                            <p class="username">{subcomment.nickname} <span>@{subcomment.account}</span></p>
+                        </div>
+                        <div class="part">
+                            <div set:html={subcomment.content}></div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    ))}
+</div>
+
+<style is:inline>
+    .part > p {
+        margin-top: 5px;
+        margin-bottom: 0px;
+    }
+</style>
+
+<style>
+    .comments {
+        margin-top: 50px;
+    }
+    .author {
+        display: flex;
+        gap: 30px; 
+    }
+
+    .part {
+        margin-left: 31.5px;
+        border-left: 5px solid #717C9B;
+        top: -10px;
+        transform: translate(0px, -30px);
+        padding-left: 60px;
+    }
+
+    .subpart {
+        border-left: 5px solid #717C9B;
+
+        padding-left: 60px;
+    }
+
+    .comment {
+        display: flex;
+        flex-direction: column;
+        /* gap: 20px; */
+        /* display: grid; */
+        /* grid-template-areas: "image part part part part part part part part"; */
+    }
+    .content {
+        /* grid-area: part; */
+        border-left: 2px solid #717C9B;
+    }
+    img {
+        /* grid-area: image; */
+        margin-top: 5px;
+        height: 64px;
+        width: 64px;
+        border-radius: 100%;
+        z-index: 99;
+    }
+
+    .username {
+        margin: 0px;
+        font-weight: bold;
+    }
+
+    .username > span {
+        color: #717C9B;
+        font-weight: lighter;
+    }
+
+    p {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+</style>
