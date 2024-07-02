@@ -16,7 +16,7 @@ export const get: APIRoute = async ({ params, request }) => {
             {
                 rel: "self",
                 type: "application/activity+json",
-                href: "https://blog-fedi3000.exerra.xyz/.well-known/actor"
+                href: "https://blog-fedi3000.exerra.xyz/actor"
             }//,
             // {
             //     rel: "http://ostatus.org/schema/1.0/subscribe",
