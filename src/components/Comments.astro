@@ -20,7 +20,8 @@ interface CommentPart {
     id: string,
     content: string,
     likes: number,
-    created_at: Date
+    created_at: Date,
+    account_url: string
 }
 
 interface Comment extends CommentPart {
@@ -47,6 +48,7 @@ for (let comment of topLevelComments) {
         content: comment.content,
         likes: comment.favourites_count,
         created_at: new Date(comment.created_at),
+        account_url: comment.account.url,
         comments: []
     }
 
@@ -78,6 +80,7 @@ for (let i in comments) {
             content: comment.content,
             likes: comment.favourites_count,
             created_at: new Date(comment.created_at),
+            account_url: comment.account.url
         })
     }
 }
@@ -86,34 +89,39 @@ console.timeEnd("loop")
 
 ---
 
-<h2 id="comments">Comments</h1>
+<div class="commentContainer">
+    <hr />
 
-<p>Only the top 2 levels of comments are shown.</p>
-<p>To view the rest, or comment yourself, go to this post on <a href={`https://${fediBase}/@exerra@indieweb.social/${fediPost}`}>Mastodon</a></p>
+    <h2 id="comments">Comments</h1>
 
-<div class="comments">
-    {comments.map(comment => (
-        <div class="comment">
-            <div class="author">
-                <img src={comment.avatar} width={64} height={64} />
-                <p class="username">{comment.nickname} <span>@{comment.account}</span></p>
-            </div>
-            <div class="part">
-                <div set:html={comment.content}></div>
-                {comment.comments.map(subcomment => (
-                    <div class="subcomment">
-                        <div class="author">
-                            <img src={subcomment.avatar} width={64} height={64} />
-                            <p class="username">{subcomment.nickname} <span>@{subcomment.account}</span></p>
+    <p>Only the top 2 levels of comments are shown.</p>
+    <p>To view the rest, or comment yourself, go to this post on <a href={`https://${fediBase}/@exerra@indieweb.social/${fediPost}`}>Mastodon</a></p>
+    
+    <div class="comments">
+        {comments.map(comment => (
+            <div class="comment">
+                <div class="author">
+                    <img src={comment.avatar} width={64} height={64} />
+                    <a href={comment.account_url} class="username">{comment.nickname} <span>@{comment.account}</span></a>
+                </div>
+                <div class="part">
+                    <div set:html={comment.content}></div>
+                    {comment.comments.map(subcomment => (
+                        <div class="subcomment">
+                            <div class="author">
+                                <img src={subcomment.avatar} width={64} height={64} />
+                                <a href={subcomment.account_url} class="username">{subcomment.nickname} <span>@{subcomment.account}</span></a>
+                            </div>
+                            <div class="part">
+                                {/* I fear this. I will not fix the vuln though. */}
+                                <div set:html={subcomment.content}></div>
+                            </div>
                         </div>
-                        <div class="part">
-                            <div set:html={subcomment.content}></div>
-                        </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
-        </div>
-    ))}
+        ))}
+    </div>
 </div>
 
 <style is:inline>
@@ -124,8 +132,16 @@ console.timeEnd("loop")
 </style>
 
 <style>
+
+    a {
+        text-decoration: none;
+        font-size: 20.8px;
+        padding-top: 5px;
+    }
+
     .comments {
         margin-top: 50px;
+        overflow: hidden;
     }
     .author {
         display: flex;
@@ -133,7 +149,7 @@ console.timeEnd("loop")
     }
 
     .part {
-        margin-left: 31.5px;
+        margin-left: 30px;
         border-left: 5px solid #717C9B;
         top: -10px;
         transform: translate(0px, -30px);
@@ -149,16 +165,11 @@ console.timeEnd("loop")
     .comment {
         display: flex;
         flex-direction: column;
-        /* gap: 20px; */
-        /* display: grid; */
-        /* grid-template-areas: "image part part part part part part part part"; */
     }
     .content {
-        /* grid-area: part; */
         border-left: 2px solid #717C9B;
     }
     img {
-        /* grid-area: image; */
         margin-top: 5px;
         height: 64px;
         width: 64px;
@@ -179,5 +190,12 @@ console.timeEnd("loop")
     p {
         margin-top: 0px;
         margin-bottom: 0px;
+    }
+
+    @media only screen and (max-width: 600px) {
+        /* Sometimes the best responsiveness is gatekeeping */
+        .commentContainer {
+            display: none;
+        }
     }
 </style>
