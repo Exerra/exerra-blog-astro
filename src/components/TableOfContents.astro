@@ -1,4 +1,6 @@
 ---
+import TocList from './TocList.astro'
+
 interface Heading {
     depth: number
     slug: string
@@ -48,31 +50,7 @@ const toc = buildToc(headings)
     </summary>
 
     <nav class="toc-nav">
-        <ul>
-            {toc.map(item => (
-                <li>
-                    <a href={`#${item.heading.slug}`}>{item.heading.text}</a>
-                    {item.children.length > 0 && (
-                        <ul>
-                            {item.children.map(child => (
-                                <li>
-                                    <a href={`#${child.heading.slug}`}>{child.heading.text}</a>
-                                    {child.children.length > 0 && (
-                                        <ul>
-                                            {child.children.map(grandchild => (
-                                                <li>
-                                                    <a href={`#${grandchild.heading.slug}`}>{grandchild.heading.text}</a>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    )}
-                                </li>
-                            ))}
-                        </ul>
-                    )}
-                </li>
-            ))}
-        </ul>
+        <TocList items={toc} />
     </nav>
 </details>
 

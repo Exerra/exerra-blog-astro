@@ -1,0 +1,27 @@
+---
+interface Heading {
+    depth: number
+    slug: string
+    text: string
+}
+
+interface TocItem {
+    heading: Heading
+    children: TocItem[]
+}
+
+interface Props {
+    items: TocItem[]
+}
+
+const { items } = Astro.props
+---
+
+<ul>
+    {items.map(item => (
+        <li>
+            <a href={`#${item.heading.slug}`}>{item.heading.text}</a>
+            {item.children.length > 0 && <Astro.self items={item.children} />}
+        </li>
+    ))}
+</ul>
