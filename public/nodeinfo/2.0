@@ -1,0 +1,19 @@
+{
+  "version": "2.0",
+  "software": {
+    "name": "exerra-blog",
+    "version": "1.0.0"
+  },
+  "protocols": [
+    "activitypub"
+  ],
+  "usage": {
+    "users": {
+      "total": 1,
+      "activeMonth": 1,
+      "activeHalfyear": 1
+    },
+    "localPosts": 11
+  },
+  "openRegistrations": false
+}

@@ -46,6 +46,9 @@ const site = Astro.site?.href
 
 <link rel="alternate" type="application/rss+xml" title="Exerra's Blog" href={site + "rss.xml"} />
 
+<!-- ActivityPub / Federation -->
+<link rel="alternate" type="application/activity+json" href={site + "activitypub/actor"} />
+
 <!-- This is intentionally inlined to avoid FOUC -->
 <script>
   const root = document.documentElement;

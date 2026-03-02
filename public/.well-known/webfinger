@@ -1,0 +1,18 @@
+{
+  "subject": "acct:blog@blog.exerra.xyz",
+  "aliases": [
+    "https://blog.exerra.xyz/activitypub/actor"
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "type": "application/activity+json",
+      "href": "https://blog.exerra.xyz/activitypub/actor"
+    },
+    {
+      "rel": "http://webfinger.net/rel/profile-page",
+      "type": "text/html",
+      "href": "https://blog.exerra.xyz"
+    }
+  ]
+}
