@@ -1,114 +1,139 @@
 ---
-interface Props {
-    md: string
-}
-
-const { md } = Astro.props
-
-const regex = /(?<flag>#{1,6})\s+(?<content>.+)/g
-
-const ToC = Array.from(
-	md.matchAll(regex)
-).map(({ groups }) => ({
-	heading: groups?.flag.length!,
-	content: groups?.content!
-}))
-
 interface Heading {
-    heading: number,
-    content: string
+    depth: number
+    slug: string
+    text: string
 }
 
-let parsed: Array<{
-    heading: number,
-    content: string,
-    subHeadings: Array<Heading>
-}> = []
+interface TocItem {
+    heading: Heading
+    children: TocItem[]
+}
 
-const parseToC = async (data: Array<Heading>, index: number): Promise<void> => {
+interface Props {
+    headings: Heading[]
+}
 
-    if (data[index + 1] == undefined) return
+const { headings } = Astro.props
 
-    if (data[index + 1].heading > data[index].heading) {
-        //temp[0].push(data[index + 1])
+function buildToc(headings: Heading[]): TocItem[] {
+    const toc: TocItem[] = []
+    const stack: TocItem[] = []
 
-        if (parsed.length < (index + 1)) {
-            parsed.push({
-                heading: data[index].heading,
-                content: data[index].content,
-                subHeadings: []
-            })
+    for (const heading of headings) {
+        const item: TocItem = { heading, children: [] }
+
+        while (stack.length > 0 && stack[stack.length - 1].heading.depth >= heading.depth) {
+            stack.pop()
+        }
+
+        if (stack.length === 0) {
+            toc.push(item)
         } else {
-            parsed[index].subHeadings.push(data[index + 1])
+            stack[stack.length - 1].children.push(item)
         }
 
-        delete data[index + 1]
-
-        data = data.filter(function( element ) {
-            return element !== undefined;
-        });
-
-        return parseToC(data, index)
+        stack.push(item)
     }
 
-    if (data[index + 1].heading == data[index].heading) {
-
-        if (!parsed.some(e => e.content === data[index].content)) {
-            parsed.push({
-                heading: data[index].heading,
-                content: data[index ].content,
-                subHeadings: []
-            })
-        } else if (!parsed.some(e => e.content === data[index + 1].content)) {
-            parsed.push({
-                heading: data[index + 1].heading,
-                content: data[index + 1].content,
-                subHeadings: []
-            })
-        }
-
-
-        data = await data.filter(function( element ) {
-            return element !== undefined;
-        });
-
-        return parseToC(data, ++index)
-    }
-
-    return 
+    return toc
 }
 
-await parseToC(ToC, 0)
-
+const toc = buildToc(headings)
 ---
 
-<details>
+<details open>
     <summary>
         <h2>Table of Contents</h2>
     </summary>
 
-    <ul>
-        {parsed.map(h => (
-            <li>
-                <a href={`#${h.content.toLowerCase().split(" ").join("-")}`}>{h.content}</a>
-                {h.subHeadings?.length > 0 ? <ul>
-                    {h.subHeadings.map(sh => (
-                        <li><a href={`#${sh.content.toLowerCase().split(" ").join("-")}`}>{sh.content}</a></li>
-                    ))}
-                </ul> : <></>}
-            </li>
-        ))}
-    </ul>
+    <nav class="toc-nav">
+        <ul>
+            {toc.map(item => (
+                <li>
+                    <a href={`#${item.heading.slug}`}>{item.heading.text}</a>
+                    {item.children.length > 0 && (
+                        <ul>
+                            {item.children.map(child => (
+                                <li>
+                                    <a href={`#${child.heading.slug}`}>{child.heading.text}</a>
+                                    {child.children.length > 0 && (
+                                        <ul>
+                                            {child.children.map(grandchild => (
+                                                <li>
+                                                    <a href={`#${grandchild.heading.slug}`}>{grandchild.heading.text}</a>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                </li>
+            ))}
+        </ul>
+    </nav>
 </details>
 
 <style>
-    summary {
-        margin-top: 1em;
+    details {
+        border: 1px solid var(--text-secondary);
+        border-radius: 8px;
+        padding: 0.5em 1em;
+        margin: 1.5em 0;
     }
 
-	summary h2,
-	summary h3 {
-		margin-top: -1em;
-		margin-left: 1em;
-	}
+    summary {
+        cursor: pointer;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+    }
+
+    summary::-webkit-details-marker {
+        display: none;
+    }
+
+    summary::before {
+        content: '▶';
+        font-size: 0.7em;
+        transition: transform 0.2s ease;
+    }
+
+    details[open] > summary::before {
+        transform: rotate(90deg);
+    }
+
+    summary h2 {
+        margin: 0;
+        font-size: 1.3em;
+    }
+
+    .toc-nav ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 0.5em 0;
+    }
+
+    .toc-nav ul ul {
+        padding-left: 1.2em;
+    }
+
+    .toc-nav li {
+        margin: 0.3em 0;
+    }
+
+    .toc-nav a {
+        text-decoration: none;
+        font-family: var(--font-family-sans);
+        font-size: 1rem;
+        color: var(--text-secondary);
+        transition: color 0.15s ease;
+    }
+
+    .toc-nav a:hover {
+        color: var(--primary-color);
+    }
 </style>
