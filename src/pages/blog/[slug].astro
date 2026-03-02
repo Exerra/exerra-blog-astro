@@ -12,9 +12,10 @@ export async function getStaticPaths() {
 	}));
 }
 
-const { Content, frontmatter, rawContent } = Astro.props.post;
+const { Content, frontmatter, rawContent, getHeadings } = Astro.props.post;
 const { title, description, publishDate, image, imagealt, hideToC } = frontmatter;
 const { slug, readingTime } = getPostData(Astro.props.post);
+const headings = await getHeadings();
 const permalink = `${Astro.site?.href}blog/${slug}`;
 ---
 
@@ -28,7 +29,7 @@ const permalink = `${Astro.site?.href}blog/${slug}`;
 		<article class="content">
 			{image ? <img class={"thumbnail"} src={image} alt={imagealt} loading={"lazy"} /> : <></>}
 
-			{ hideToC ? <></> : <TableOfContents md={rawContent()} /> }
+			{ hideToC ? <></> : <TableOfContents headings={headings} /> }
 
 			<Content />
 		</article>
