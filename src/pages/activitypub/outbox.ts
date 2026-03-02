@@ -1,8 +1,8 @@
 const SITE = "https://blog.exerra.xyz"
 
-let postsImport: any = import.meta.glob("../../data/blog-posts/*.md", { eager: true })
-let posts = Object.values(postsImport)
-posts = posts.sort((a: any, b: any) => new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf())
+const postsImport: any = import.meta.glob("../../data/blog-posts/*.md", { eager: true })
+const posts = Object.values(postsImport)
+posts.sort((a: any, b: any) => new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf())
 
 const items = posts.map((post: any) => {
   const slug = post.file.split('/').pop()?.split('.').shift()
